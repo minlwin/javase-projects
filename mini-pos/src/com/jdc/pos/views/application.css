@@ -1,0 +1,290 @@
+*{
+	dark:#364f6b;
+	light:#f5f5f5;
+	ascent:#3fc1c9;
+}
+
+.login-view {
+	-fx-pref-width: 480px;
+	-fx-pref-height: 320px;
+}
+
+.login-logo-wrapper {
+	-fx-alignment: center;
+	-fx-background-color: ascent;
+	-fx-padding: 16px;
+}
+
+.login-title {
+	-fx-font-size: 24px;
+}
+
+.login-form {
+	-fx-alignment: center-left;
+	-fx-padding: 0 60 0 20;
+	-fx-background-color: dark;
+	-fx-spacing: 16px;
+}
+
+.login-form  Label {
+	-fx-text-fill: light;
+}
+
+.form-group {
+	-fx-spacing: 4px;
+}
+
+.login-form .text-field,
+.login-form .password-field
+ {
+	-fx-background-color: transparent;
+	-fx-border-radius: 2px;
+	-fx-border-color: light;
+	-fx-text-fill: light;
+	-fx-prompt-text-fill: ascent;
+}
+
+.light-button {
+	-fx-pref-width: 80px;
+	-fx-background-color: light;
+	-fx-border-color: light;
+	-fx-text-fill: dark;	
+	-fx-border-radius: 2px;
+}
+
+.light-button:hover {
+	-fx-background-color: dark;
+	-fx-border-color: light;
+	-fx-text-fill: light;
+}
+
+.dark-button {
+	-fx-pref-width: 80px;
+	-fx-background-color: light;
+	-fx-border-color: dark;
+	-fx-text-fill: dark;	
+	-fx-border-radius: 2px;
+}
+
+.dark-button:hover {
+	-fx-background-color: dark;
+	-fx-border-color: dark;
+	-fx-text-fill: light;
+}
+
+
+.main-frame {
+	-fx-pref-width: 980px;
+	-fx-pref-height: 680px;
+}
+
+.main-header {
+	-fx-background-color: dark;
+}
+
+.main-title-wrapper {
+	-fx-alignment: center-left;
+	-fx-padding: 0 0 0 20;
+}
+
+.main-title-wrapper Label,
+.icon-button Label,
+.icon-button SVGPath
+{
+	-fx-text-fill: light;
+	-fx-fill: light;
+}
+
+.main-title-wrapper Label {
+	-fx-font-size: 24px;
+}
+
+.icon-button {
+	-fx-alignment: bottom-center;
+	-fx-padding: 8px;
+	-fx-background-color: dark;
+	-fx-pref-width: 80px;
+}
+
+.icon-active {
+	-fx-background-color: ascent;
+}
+
+.icon-active Label,
+.icon-active SVGPath {
+	-fx-text-fill: dark;
+	-fx-fill: dark;
+}
+
+.icon-button:hover {
+	-fx-background-color: light;
+	-fx-cursor: hand;
+}
+
+.icon-button:hover Label,
+.icon-button:hover SVGPath
+{
+	-fx-text-fill: dark;
+	-fx-fill: dark;
+}
+
+.content-view {
+	-fx-pref-width: 980px;
+	-fx-pref-height: 630.5px;
+	-fx-max-width: infinity;
+	-fx-max-height: infinity;
+	-fx-padding: 20px;
+	-fx-background-color: light;
+	-fx-spacing: 20px;
+}
+
+.content-view .text-field {
+	-fx-background-color: transparent;
+	-fx-border-color: dark;
+	-fx-border-radius: 2px;
+	-fx-prompt-text-fill: dark;
+}
+
+.date-picker {
+	-fx-background-color: transparent;
+}
+
+.date-picker .date-picker-display-node {
+	-fx-border-width: 1 0 1 1;
+}
+
+.date-picker .arrow-button {
+	-fx-background-color: transparent;
+	-fx-border-color: dark;
+	-fx-border-radius: 2px;
+}
+
+.search-bar {
+	-fx-spacing: 10px;
+	-fx-pref-height: 30px;
+	-fx-alignment: center-left;
+}
+
+.scroll-pane {
+	-fx-padding: 10 20 10 10;
+	-fx-fit-to-width: true;
+}
+
+TilePane {
+	-fx-vgap: 10;
+	-fx-hgap: 10;
+}
+
+.product-card {
+	-fx-pref-width: 225px;
+	-fx-padding: 10;
+	-fx-background-color: light;
+	-fx-border-color: dark;
+	-fx-border-radius: 2px;
+}
+
+.product-card:hover {
+	-fx-background-color: dark;
+	-fx-border-color: dark;
+	-fx-border-radius: 2px;
+	-fx-background-radius: 2px;
+}
+
+.product-card Label, 
+.product-card SVGPath {
+	-fx-text-fill: dark;
+	-fx-fill: dark;
+}
+
+.product-card:hover Label, 
+.product-card:hover SVGPath {
+	-fx-text-fill: light;
+	-fx-fill: light;
+}
+
+.icon-box {
+	-fx-alignment: top-center;
+	-fx-pref-width: 60;
+	-fx-padding: 10 0 0 0;
+}
+
+.icon-box SVGPath {
+	-fx-scale-x: 2;
+	-fx-scale-y: 2;
+}
+
+.content-region {
+	-fx-border-color: dark;
+	-fx-border-radius: 2px;
+}
+
+.content-region > .header {
+	-fx-background-color: ascent;
+	-fx-padding: 10px;
+	-fx-border-color: dark;
+	-fx-border-width: 0 0 1 0;
+}
+
+.content-region > .body {
+	-fx-padding: 10;
+	-fx-spacing: 10;
+}
+
+.product-region {
+	-fx-min-width: 600px;
+}
+
+.cart-region {
+	-fx-min-width: 300px;
+	-fx-max-width: 400px;
+}
+
+.cart-icon-box {
+	-fx-padding: 10 0 0 10;
+}
+
+.cart-icon-box SVGPath {
+	-fx-scale-x: 1.5;
+	-fx-scale-y: 1.5;
+}
+
+.cart-button-box {
+	-fx-spacing: 10;
+}
+
+.cart-button {
+	-fx-alignment: bottom-center;
+	-fx-padding: 20;
+	-fx-spacing: 10;
+	-fx-border-color: dark;
+	-fx-border-radius: 2px;
+	-fx-background-color: light;
+}
+
+.cart-button:hover {
+	-fx-border-color: dark;
+	-fx-border-radius: 2px;
+	-fx-background-radius: 2px;
+	-fx-background-color: dark;
+}
+
+.cart-button Label,
+.cart-button SVGPath {
+	-fx-text-fill: dark;
+	-fx-fill: dark;
+}
+
+.cart-button:hover Label,
+.cart-button:hover SVGPath {
+	-fx-text-fill: light;
+	-fx-fill: light;
+}
+
+.cart-button  SVGPath{
+	-fx-scale-x: 1.5;
+	-fx-scale-y: 1.5;
+}
+
+.table-view .table-column {
+	-fx-background-color: ascent;
+}
