@@ -27,7 +27,7 @@ public class PosFrame {
 		var source = event.getSource();
 		
 		if(source instanceof VBox) {
-			VBox box = (VBox) source;
+			var box = (VBox) source;
 			loadView(box.getId());
 		}
 	}
