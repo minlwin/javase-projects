@@ -4,11 +4,13 @@
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="content-view" stylesheets="@application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -21,14 +23,67 @@
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" VBox.vgrow="ALWAYS">
          <children>
-            <LineChart HBox.hgrow="ALWAYS">
-              <xAxis>
-                <CategoryAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
-            </LineChart>
+            <VBox HBox.hgrow="ALWAYS">
+               <children>
+                  <LineChart VBox.vgrow="ALWAYS">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
+                  <HBox styleClass="summary-row">
+                     <children>
+                        <HBox styleClass="summary-card" HBox.hgrow="ALWAYS">
+                           <children>
+                              <VBox styleClass="icon">
+                                 <children>
+                                    <SVGPath content="M4 4c0-0.634-0.509-1.143-1.143-1.143s-1.143 0.509-1.143 1.143 0.509 1.143 1.143 1.143 1.143-0.509 1.143-1.143zM13.527 9.143c0 0.304-0.125 0.598-0.33 0.804l-4.384 4.393c-0.214 0.205-0.509 0.33-0.813 0.33s-0.598-0.125-0.804-0.33l-6.384-6.393c-0.455-0.446-0.813-1.313-0.813-1.946v-3.714c0-0.625 0.518-1.143 1.143-1.143h3.714c0.634 0 1.5 0.357 1.955 0.813l6.384 6.375c0.205 0.214 0.33 0.509 0.33 0.813zM16.955 9.143c0 0.304-0.125 0.598-0.33 0.804l-4.384 4.393c-0.214 0.205-0.509 0.33-0.813 0.33-0.464 0-0.696-0.214-1-0.527l4.196-4.196c0.205-0.205 0.33-0.5 0.33-0.804s-0.125-0.598-0.33-0.813l-6.384-6.375c-0.455-0.455-1.321-0.813-1.955-0.813h2c0.634 0 1.5 0.357 1.955 0.813l6.384 6.375c0.205 0.214 0.33 0.509 0.33 0.813zM4 4c0-0.634-0.509-1.143-1.143-1.143s-1.143 0.509-1.143 1.143 0.509 1.143 1.143 1.143 1.143-0.509 1.143-1.143zM13.527 9.143c0 0.304-0.125 0.598-0.33 0.804l-4.384 4.393c-0.214 0.205-0.509 0.33-0.813 0.33s-0.598-0.125-0.804-0.33l-6.384-6.393c-0.455-0.446-0.813-1.313-0.813-1.946v-3.714c0-0.625 0.518-1.143 1.143-1.143h3.714c0.634 0 1.5 0.357 1.955 0.813l6.384 6.375c0.205 0.214 0.33 0.509 0.33 0.813zM16.955 9.143c0 0.304-0.125 0.598-0.33 0.804l-4.384 4.393c-0.214 0.205-0.509 0.33-0.813 0.33-0.464 0-0.696-0.214-1-0.527l4.196-4.196c0.205-0.205 0.33-0.5 0.33-0.804s-0.125-0.598-0.33-0.813l-6.384-6.375c-0.455-0.455-1.321-0.813-1.955-0.813h2c0.634 0 1.5 0.357 1.955 0.813l6.384 6.375c0.205 0.214 0.33 0.509 0.33 0.813z" />
+                                 </children>
+                              </VBox>
+                              <VBox styleClass="data" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label text="Category" />
+                                    <Label styleClass="title" text="10" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="10.0" styleClass="summary-card" HBox.hgrow="ALWAYS">
+                           <children>
+                              <VBox styleClass="icon">
+                                 <children>
+                                    <SVGPath content="M8.286 12.107v-6.393h-2.857v6.393c0 0.313 0.259 0.464 0.571 0.464h1.714c0.312 0 0.571-0.152 0.571-0.464zM4.214 4.571h1.741l-1.125-1.438c-0.098-0.116-0.313-0.277-0.616-0.277-0.473 0-0.857 0.384-0.857 0.857s0.384 0.857 0.857 0.857zM10.357 3.714c0-0.473-0.384-0.857-0.857-0.857-0.304 0-0.518 0.161-0.616 0.277l-1.116 1.438h1.732c0.473 0 0.857-0.384 0.857-0.857zM13.714 6v2.857c0 0.161-0.125 0.286-0.286 0.286h-0.857v3.714c0 0.473-0.384 0.857-0.857 0.857h-9.714c-0.473 0-0.857-0.384-0.857-0.857v-3.714h-0.857c-0.161 0-0.286-0.125-0.286-0.286v-2.857c0-0.161 0.125-0.286 0.286-0.286h3.929c-1.107 0-2-0.893-2-2s0.893-2 2-2c0.598 0 1.152 0.25 1.5 0.688l1.143 1.473 1.143-1.473c0.348-0.438 0.902-0.688 1.5-0.688 1.107 0 2 0.893 2 2s-0.893 2-2 2h3.929c0.161 0 0.286 0.125 0.286 0.286zM8.286 12.107v-6.393h-2.857v6.393c0 0.313 0.259 0.464 0.571 0.464h1.714c0.312 0 0.571-0.152 0.571-0.464zM4.214 4.571h1.741l-1.125-1.438c-0.098-0.116-0.313-0.277-0.616-0.277-0.473 0-0.857 0.384-0.857 0.857s0.384 0.857 0.857 0.857zM10.357 3.714c0-0.473-0.384-0.857-0.857-0.857-0.304 0-0.518 0.161-0.616 0.277l-1.116 1.438h1.732c0.473 0 0.857-0.384 0.857-0.857zM13.714 6v2.857c0 0.161-0.125 0.286-0.286 0.286h-0.857v3.714c0 0.473-0.384 0.857-0.857 0.857h-9.714c-0.473 0-0.857-0.384-0.857-0.857v-3.714h-0.857c-0.161 0-0.286-0.125-0.286-0.286v-2.857c0-0.161 0.125-0.286 0.286-0.286h3.929c-1.107 0-2-0.893-2-2s0.893-2 2-2c0.598 0 1.152 0.25 1.5 0.688l1.143 1.473 1.143-1.473c0.348-0.438 0.902-0.688 1.5-0.688 1.107 0 2 0.893 2 2s-0.893 2-2 2h3.929c0.161 0 0.286 0.125 0.286 0.286z" />
+                                 </children>
+                              </VBox>
+                              <VBox styleClass="data" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label text="Product" />
+                                    <Label styleClass="title" text="258" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="77.0" layoutY="10.0" styleClass="summary-card" HBox.hgrow="ALWAYS">
+                           <children>
+                              <VBox styleClass="icon">
+                                 <children>
+                                    <SVGPath content="M14.92 5.054c0 0.223-0.089 0.446-0.25 0.607l-7.679 7.679c-0.161 0.161-0.384 0.25-0.607 0.25s-0.446-0.089-0.607-0.25l-4.446-4.446c-0.161-0.161-0.25-0.384-0.25-0.607s0.089-0.446 0.25-0.607l1.214-1.214c0.161-0.161 0.384-0.25 0.607-0.25s0.446 0.089 0.607 0.25l2.625 2.634 5.857-5.866c0.161-0.161 0.384-0.25 0.607-0.25s0.446 0.089 0.607 0.25l1.214 1.214c0.161 0.161 0.25 0.384 0.25 0.607zM14.92 5.054c0 0.223-0.089 0.446-0.25 0.607l-7.679 7.679c-0.161 0.161-0.384 0.25-0.607 0.25s-0.446-0.089-0.607-0.25l-4.446-4.446c-0.161-0.161-0.25-0.384-0.25-0.607s0.089-0.446 0.25-0.607l1.214-1.214c0.161-0.161 0.384-0.25 0.607-0.25s0.446 0.089 0.607 0.25l2.625 2.634 5.857-5.866c0.161-0.161 0.384-0.25 0.607-0.25s0.446 0.089 0.607 0.25l1.214 1.214c0.161 0.161 0.25 0.384 0.25 0.607z" />
+                                 </children>
+                              </VBox>
+                              <VBox styleClass="data" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label text="Sales" />
+                                    <Label styleClass="title" text="285,1K" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
             <TableView>
               <columns>
                 <TableColumn prefWidth="75.0" text="Product Name" />

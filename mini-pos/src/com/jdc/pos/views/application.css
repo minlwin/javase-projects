@@ -288,3 +288,38 @@ TilePane {
 .table-view .table-column {
 	-fx-background-color: ascent;
 }
+
+.summary-card {
+	-fx-background-color: dark;
+	-fx-background-radius: 4px;
+	-fx-padding: 20 0;
+}
+
+.summary-card Label,
+.summary-card SVGPath {
+	-fx-text-fill: light;
+	-fx-fill: light;
+}
+
+.summary-card .icon {
+	-fx-pref-width: 60;
+	-fx-alignment: center;
+}
+
+.summary-card .icon SVGPath {
+	-fx-scale-x: 2;
+	-fx-scale-y: 2;
+}
+
+.summary-card .data {
+	-fx-alignment: center-left;
+	-fx-spacing: 4px;
+} 
+
+.summary-card .title {
+	-fx-font-size: 28px;	
+}
+
+.summary-row {
+	-fx-spacing: 10;
+}
