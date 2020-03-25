@@ -7,16 +7,16 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="content-view" stylesheets="@application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="content-view" stylesheets="@application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jdc.pos.views.SaleHistory">
    <children>
       <HBox styleClass="search-bar">
          <children>
-            <TextField promptText="Sale Person" />
-            <DatePicker promptText="From" />
-            <DatePicker promptText="To" />
+            <TextField fx:id="schPerson" promptText="Sale Person" />
+            <DatePicker fx:id="schFrom" promptText="From" />
+            <DatePicker fx:id="schTo" promptText="To" />
          </children>
       </HBox>
-      <TableView prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+      <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
         <columns>
           <TableColumn maxWidth="300.0" minWidth="120.0" prefWidth="-1.0" text="Sale Person" />
             <TableColumn maxWidth="300.0" minWidth="120.0" prefWidth="-1.0" text="Sale Date" />

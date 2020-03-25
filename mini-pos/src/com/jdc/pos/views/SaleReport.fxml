@@ -7,17 +7,17 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="content-view" stylesheets="@application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="content-view" stylesheets="@application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jdc.pos.views.SaleReport">
    <children>
       <HBox styleClass="search-bar">
          <children>
-            <TextField promptText="Category" />
-            <TextField promptText="Product Name" />
-            <DatePicker promptText="From" />
-            <DatePicker promptText="To" />
+            <TextField fx:id="schCategory" promptText="Category" />
+            <TextField fx:id="schProduct" promptText="Product Name" />
+            <DatePicker fx:id="schFrom" promptText="From" />
+            <DatePicker fx:id="schTo" promptText="To" />
          </children>
       </HBox>
-      <TableView prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+      <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
         <columns>
           <TableColumn maxWidth="300.0" minWidth="120.0" prefWidth="-1.0" text="Category" />
             <TableColumn maxWidth="300.0" minWidth="120.0" prefWidth="-1.0" text="Product" />

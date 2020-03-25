@@ -63,7 +63,6 @@ public class PosFrame {
 			Stage stage = new Stage();
 			Parent root = FXMLLoader.load(PosFrame.class.getResource("PosFrame.fxml"));
 			stage.setScene(new Scene(root));
-			stage.setMaximized(true);
 			stage.show();
 			
 		} catch (Exception e) {

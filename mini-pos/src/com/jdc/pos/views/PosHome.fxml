@@ -12,20 +12,29 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.SVGPath?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="content-view" stylesheets="@application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="content-view" stylesheets="@application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jdc.pos.views.PosHome">
    <children>
       <HBox styleClass="search-bar">
          <children>
-            <TextField promptText="Category" />
-            <DatePicker promptText="From" />
-            <DatePicker promptText="To" />
+            <TextField fx:id="schCategory" promptText="Category" />
+            <DatePicker fx:id="schFrom" promptText="From" />
+            <DatePicker fx:id="schTo" promptText="To" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" VBox.vgrow="ALWAYS">
          <children>
+            <TableView fx:id="topItems">
+              <columns>
+                <TableColumn prefWidth="75.0" text="Product Name" />
+                <TableColumn prefWidth="75.0" text="Sales" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
             <VBox HBox.hgrow="ALWAYS">
                <children>
-                  <LineChart VBox.vgrow="ALWAYS">
+                  <LineChart fx:id="chart" VBox.vgrow="ALWAYS">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
@@ -45,7 +54,7 @@
                               <VBox styleClass="data" HBox.hgrow="ALWAYS">
                                  <children>
                                     <Label text="Category" />
-                                    <Label styleClass="title" text="10" />
+                                    <Label fx:id="categories" styleClass="title" text="10" />
                                  </children>
                               </VBox>
                            </children>
@@ -60,7 +69,7 @@
                               <VBox styleClass="data" HBox.hgrow="ALWAYS">
                                  <children>
                                     <Label text="Product" />
-                                    <Label styleClass="title" text="258" />
+                                    <Label fx:id="products" styleClass="title" text="258" />
                                  </children>
                               </VBox>
                            </children>
@@ -75,7 +84,7 @@
                               <VBox styleClass="data" HBox.hgrow="ALWAYS">
                                  <children>
                                     <Label text="Sales" />
-                                    <Label styleClass="title" text="285,1K" />
+                                    <Label fx:id="sales" styleClass="title" text="285,1K" />
                                  </children>
                               </VBox>
                            </children>
@@ -84,15 +93,6 @@
                   </HBox>
                </children>
             </VBox>
-            <TableView>
-              <columns>
-                <TableColumn prefWidth="75.0" text="Product Name" />
-                <TableColumn prefWidth="75.0" text="Sales" />
-              </columns>
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
-            </TableView>
          </children>
       </HBox>
    </children>
