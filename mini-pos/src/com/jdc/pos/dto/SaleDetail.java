@@ -1,9 +1,12 @@
 package com.jdc.pos.dto;
 
+import java.time.LocalDate;
+
 public class SaleDetail {
 
 	private int id;
 	private int saleId;
+	private LocalDate saleDate;
 	private int productId;
 	private String productName;
 	private String category;
@@ -83,6 +86,14 @@ public class SaleDetail {
 
 	public void setTax(int tax) {
 		this.tax = tax;
+	}
+
+	public LocalDate getSaleDate() {
+		return saleDate;
+	}
+
+	public void setSaleDate(LocalDate saleDate) {
+		this.saleDate = saleDate;
 	}
 
 }

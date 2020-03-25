@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.SVGPath?>
@@ -25,8 +26,16 @@
          <children>
             <TableView fx:id="topItems">
               <columns>
-                <TableColumn prefWidth="75.0" text="Product Name" />
-                <TableColumn prefWidth="75.0" text="Sales" />
+                <TableColumn prefWidth="75.0" text="Product Name" >
+                	<cellValueFactory>
+                		<PropertyValueFactory property="key" />
+                	</cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="Sales" >
+                	<cellValueFactory>
+                		<PropertyValueFactory property="key" />
+                	</cellValueFactory>
+                </TableColumn>
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
