@@ -96,4 +96,13 @@ public class SaleDetail {
 		this.saleDate = saleDate;
 	}
 
+	public void setProduct(Product p) {
+		
+		productId = p.getId();
+		productName = p.getProduct();
+		category = p.getCategory();
+		unitPrice = p.getPrice();
+		
+	}
+
 }

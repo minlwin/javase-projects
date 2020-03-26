@@ -63,11 +63,21 @@ public class SaleDetails {
     @FXML
     void clear() {
     	cart.getItems().clear();
+    	calculate();
     }
 
-    @FXML
+	@FXML
     void paid() {
 
+		try {
+			// save sales
+			sales.save(cart.getItems());
+			
+			clear();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
     }
     
     private void searchProduct() {
@@ -88,6 +98,20 @@ public class SaleDetails {
     
     private void addToCart(Product p) {
     	
+    	SaleDetail order = cart.getItems().stream().filter(a -> a.getId() == p.getId()).findAny().orElse(new SaleDetail());
+    	
+    	if(order.getId() == 0) {
+    		order.setProduct(p);
+    		cart.getItems().add(order);
+    	}
+    	
+    	order.setQuantity(order.getQuantity() + 1);
+    	
     }
+    
+    private void calculate() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

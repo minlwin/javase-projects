@@ -9,7 +9,7 @@ import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 import com.jdc.pos.context.ConnectionManager;
-import com.jdc.pos.context.SqlHelper;
+import static com.jdc.pos.context.SqlHelper.sql;
 
 public class CategoryRepository {
 
@@ -24,7 +24,7 @@ public class CategoryRepository {
 
 	public void reload() {
 		try (Connection conn = ConnectionManager.getConnection();
-				PreparedStatement stmt = conn.prepareStatement(SqlHelper.sql("category.findAll"))){
+				PreparedStatement stmt = conn.prepareStatement(sql("category.findAll"))){
 			
 			ResultSet rs = stmt.executeQuery();
 			
@@ -44,6 +44,11 @@ public class CategoryRepository {
 	}
 
 	public static CategoryRepository getRepository() {
+		
+		if(null == repository) {
+			repository = new CategoryRepository();
+		}
+		
 		return repository;
 	}
 
