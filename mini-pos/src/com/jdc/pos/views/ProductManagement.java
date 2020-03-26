@@ -35,6 +35,7 @@ public class ProductManagement {
 
 	@FXML
 	private void initialize() {
+		
 		service = new ProductService();
 		AutoComplete.attach(schCategory, CategoryRepository.getRepository()::search, categoryProperty::set);
 		
