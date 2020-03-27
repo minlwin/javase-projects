@@ -8,6 +8,8 @@ import com.jdc.pos.service.ProductService;
 import com.jdc.pos.service.SaleService;
 import com.jdc.pos.views.custom.ProductItem;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
@@ -41,6 +43,8 @@ public class SaleDetails {
 
     @FXML
     private Label total;
+    
+    private DoubleProperty subTotalProperty = new SimpleDoubleProperty();
     
     private StringProperty categoryProperty = new SimpleStringProperty();
     private SaleService sales;

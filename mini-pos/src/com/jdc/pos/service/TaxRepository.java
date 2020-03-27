@@ -4,6 +4,7 @@ import static com.jdc.pos.context.SqlHelper.sql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.util.Map;
 import java.util.TreeMap;
@@ -23,6 +24,12 @@ public class TaxRepository {
 	public void loadData() {
 		try (Connection conn = ConnectionManager.getConnection();
 				PreparedStatement stmt = conn.prepareStatement(sql("tax.select"))){
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				data.put(rs.getDate(1).toLocalDate(), rs.getInt(2));
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
