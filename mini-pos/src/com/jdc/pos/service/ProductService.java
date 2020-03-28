@@ -99,7 +99,7 @@ public class ProductService {
 				
 				if(array.length == 3) {
 					stmt.setString(1, array[0]);
-					stmt.setString(1, array[3]);
+					stmt.setString(2, array[1]);
 					stmt.setInt(3, Integer.parseInt(array[2]));
 					stmt.setBoolean(4, false);
 				}
@@ -107,7 +107,9 @@ public class ProductService {
 				stmt.addBatch();
 			}
 			
-			stmt.executeUpdate();
+			stmt.executeBatch();
+			
+			CategoryRepository.getRepository().reload();
 			
 		} catch (Exception e) {
 			e.printStackTrace();

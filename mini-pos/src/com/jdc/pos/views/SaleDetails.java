@@ -60,6 +60,11 @@ public class SaleDetails {
     	
     	categoryProperty.addListener((a, b, c) -> searchProduct());
     	schProduct.textProperty().addListener((a, b, c) -> searchProduct());
+    	schCategory.textProperty().addListener((a,b,c) -> {
+    		if(c.isEmpty()) {
+    			searchProduct();
+    		}
+    	});
     	
     	searchProduct();
     }

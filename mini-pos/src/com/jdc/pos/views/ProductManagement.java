@@ -41,6 +41,11 @@ public class ProductManagement {
 		
 		categoryProperty.addListener((a,b,c) -> search());
 		schProduct.textProperty().addListener((a,b,c) -> search());
+		schProduct.textProperty().addListener((a,b,c) -> {
+			if(c.isEmpty()) {
+				search();
+			}
+		});
 		
 		search();
 	}

@@ -63,6 +63,13 @@ public class PosHome {
     	AutoComplete.attach(schCategory, CategoryRepository.getRepository()::search, categoryProperty::set);
     	
     	categoryProperty.addListener((a,b,c) -> loadData());
+    	
+    	schCategory.textProperty().addListener((a,b,c) -> {
+    		if(c.isEmpty()) {
+    			loadData();
+    		}
+    	});
+    	
     	schFrom.valueProperty().addListener((a,b,c) -> loadData());
     	schTo.valueProperty().addListener((a,b,c) -> loadData());
     	loadData();
