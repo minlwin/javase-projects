@@ -74,7 +74,7 @@
 
 
 .main-frame {
-	-fx-pref-width: 980px;
+	-fx-pref-width: 1040px;
 	-fx-pref-height: 680px;
 }
 
@@ -129,7 +129,7 @@
 }
 
 .content-view {
-	-fx-pref-width: 980px;
+	-fx-pref-width: 1040px;
 	-fx-pref-height: 630.5px;
 	-fx-max-width: infinity;
 	-fx-max-height: infinity;
@@ -230,22 +230,25 @@ TilePane {
 	-fx-spacing: 10;
 }
 
-.product-region {
-	-fx-min-width: 600px;
-}
 
 .cart-region {
-	-fx-min-width: 300px;
+	-fx-min-width: 400px;
 	-fx-max-width: 400px;
 }
 
 .cart-icon-box {
-	-fx-padding: 10 0 0 10;
+	-fx-padding: 6 10 0 10;
+	-fx-alignment: center-left;
 }
 
 .cart-icon-box SVGPath {
 	-fx-scale-x: 1.5;
 	-fx-scale-y: 1.5;
+}
+
+.cart-header {
+	-fx-alignment: center-left;
+	-fx-spacing: 10;
 }
 
 .cart-button-box {
@@ -285,7 +288,7 @@ TilePane {
 	-fx-scale-y: 1.5;
 }
 
-.table-view .table-column {
+.table-view .column-header {
 	-fx-background-color: ascent;
 }
 
@@ -322,4 +325,22 @@ TilePane {
 
 .summary-row {
 	-fx-spacing: 10;
+}
+
+.right {
+	-fx-alignment: center-right;
+}
+
+.sp-10 {
+	-fx-spacing: 10;
+}
+
+.tax-box {
+	-fx-alignment: center-right;
+	-fx-spacing: 10px;
+}
+
+.edit-btn {
+	-fx-alignment: center;
+	-fx-padding: 0 5 0 5;
 }

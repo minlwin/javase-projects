@@ -16,6 +16,10 @@ public class SaleDetail {
 
 	private boolean deleted;
 
+	public int getSubTotal() {
+		return quantity * unitPrice;
+	}
+	
 	public boolean isDeleted() {
 		return deleted;
 	}

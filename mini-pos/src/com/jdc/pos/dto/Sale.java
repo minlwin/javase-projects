@@ -9,11 +9,13 @@ public class Sale {
 	private LocalDate saleDate;
 	private LocalTime saleTime;
 	private String salePersonId;
+	private int taxRate;
+	private String remark;
+
 	private String salePerson;
 	private int quantity;
 	private int subTotal;
 	private int tax;
-	private String remark;
 
 	public int getId() {
 		return id;
@@ -85,6 +87,14 @@ public class Sale {
 
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+
+	public int getTaxRate() {
+		return taxRate;
+	}
+
+	public void setTaxRate(int taxRate) {
+		this.taxRate = taxRate;
 	}
 
 }

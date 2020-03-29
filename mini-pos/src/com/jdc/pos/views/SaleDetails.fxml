@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -14,7 +15,6 @@
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.SVGPath?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="content-view" stylesheets="@application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jdc.pos.views.SaleDetails">
    <children>
@@ -30,7 +30,7 @@
                   <HBox styleClass="search-bar">
                      <children>
                         <TextField fx:id="schCategory" promptText="Category" />
-                        <TextField fx:id="schProduct" promptText="Product Name Or ID" />
+                        <TextField fx:id="schProduct" promptText="Product Name " />
                      </children>
                   </HBox>
                   <ScrollPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
@@ -57,32 +57,38 @@
                <children>
                   <HBox styleClass="search-bar">
                      <children>
-                        <HBox styleClass="cart-icon-box" HBox.hgrow="ALWAYS">
+                        <HBox styleClass="cart-header" HBox.hgrow="ALWAYS">
                            <children>
-                              <SVGPath content="M5.714 13.714c0 0.625-0.518 1.143-1.143 1.143s-1.143-0.518-1.143-1.143 0.518-1.143 1.143-1.143 1.143 0.518 1.143 1.143zM13.714 13.714c0 0.625-0.518 1.143-1.143 1.143s-1.143-0.518-1.143-1.143 0.518-1.143 1.143-1.143 1.143 0.518 1.143 1.143zM14.857 4v4.571c0 0.286-0.223 0.536-0.509 0.571l-9.321 1.089c0.045 0.205 0.116 0.411 0.116 0.625 0 0.205-0.125 0.393-0.214 0.571h8.214c0.313 0 0.571 0.259 0.571 0.571s-0.259 0.571-0.571 0.571h-9.143c-0.313 0-0.571-0.259-0.571-0.571 0-0.277 0.402-0.946 0.545-1.223l-1.58-7.348h-1.821c-0.313 0-0.571-0.259-0.571-0.571s0.259-0.571 0.571-0.571h2.286c0.598 0 0.616 0.714 0.705 1.143h10.723c0.313 0 0.571 0.259 0.571 0.571zM5.714 13.714c0 0.625-0.518 1.143-1.143 1.143s-1.143-0.518-1.143-1.143 0.518-1.143 1.143-1.143 1.143 0.518 1.143 1.143zM13.714 13.714c0 0.625-0.518 1.143-1.143 1.143s-1.143-0.518-1.143-1.143 0.518-1.143 1.143-1.143 1.143 0.518 1.143 1.143zM14.857 4v4.571c0 0.286-0.223 0.536-0.509 0.571l-9.321 1.089c0.045 0.205 0.116 0.411 0.116 0.625 0 0.205-0.125 0.393-0.214 0.571h8.214c0.313 0 0.571 0.259 0.571 0.571s-0.259 0.571-0.571 0.571h-9.143c-0.313 0-0.571-0.259-0.571-0.571 0-0.277 0.402-0.946 0.545-1.223l-1.58-7.348h-1.821c-0.313 0-0.571-0.259-0.571-0.571s0.259-0.571 0.571-0.571h2.286c0.598 0 0.616 0.714 0.705 1.143h10.723c0.313 0 0.571 0.259 0.571 0.571z" />
+                              <HBox styleClass="cart-icon-box">
+                                 <children>
+                                    <SVGPath content="M5.714 13.714c0 0.625-0.518 1.143-1.143 1.143s-1.143-0.518-1.143-1.143 0.518-1.143 1.143-1.143 1.143 0.518 1.143 1.143zM13.714 13.714c0 0.625-0.518 1.143-1.143 1.143s-1.143-0.518-1.143-1.143 0.518-1.143 1.143-1.143 1.143 0.518 1.143 1.143zM14.857 4v4.571c0 0.286-0.223 0.536-0.509 0.571l-9.321 1.089c0.045 0.205 0.116 0.411 0.116 0.625 0 0.205-0.125 0.393-0.214 0.571h8.214c0.313 0 0.571 0.259 0.571 0.571s-0.259 0.571-0.571 0.571h-9.143c-0.313 0-0.571-0.259-0.571-0.571 0-0.277 0.402-0.946 0.545-1.223l-1.58-7.348h-1.821c-0.313 0-0.571-0.259-0.571-0.571s0.259-0.571 0.571-0.571h2.286c0.598 0 0.616 0.714 0.705 1.143h10.723c0.313 0 0.571 0.259 0.571 0.571zM5.714 13.714c0 0.625-0.518 1.143-1.143 1.143s-1.143-0.518-1.143-1.143 0.518-1.143 1.143-1.143 1.143 0.518 1.143 1.143zM13.714 13.714c0 0.625-0.518 1.143-1.143 1.143s-1.143-0.518-1.143-1.143 0.518-1.143 1.143-1.143 1.143 0.518 1.143 1.143zM14.857 4v4.571c0 0.286-0.223 0.536-0.509 0.571l-9.321 1.089c0.045 0.205 0.116 0.411 0.116 0.625 0 0.205-0.125 0.393-0.214 0.571h8.214c0.313 0 0.571 0.259 0.571 0.571s-0.259 0.571-0.571 0.571h-9.143c-0.313 0-0.571-0.259-0.571-0.571 0-0.277 0.402-0.946 0.545-1.223l-1.58-7.348h-1.821c-0.313 0-0.571-0.259-0.571-0.571s0.259-0.571 0.571-0.571h2.286c0.598 0 0.616 0.714 0.705 1.143h10.723c0.313 0 0.571 0.259 0.571 0.571z" />
+                                 </children>
+                              </HBox>
+                              <Label fx:id="saleDate" text="2020/01/16" />
+                              <Label fx:id="saleTime" text="16:00" />
                            </children>
                         </HBox>
                         <Label fx:id="headerTotal" text="1,800 MMK" />
                      </children>
                   </HBox>
-                  <TableView fx:id="cart" prefHeight="200.0" VBox.vgrow="ALWAYS">
+                  <TableView fx:id="cart" editable="true" prefHeight="200.0" VBox.vgrow="ALWAYS">
                     <columns>
-                      <TableColumn maxWidth="200.0" prefWidth="75.0" text="Product" >
+                      <TableColumn maxWidth="200.0" prefWidth="75.0" text="Product">
 			          	  <cellValueFactory>
 			          		 <PropertyValueFactory property="productName" />
 			          	  </cellValueFactory>
 			          </TableColumn>
-                      <TableColumn maxWidth="60.0" minWidth="60.0" prefWidth="60.0" text="Unit Price" >
+                      <TableColumn fx:id="priceColumn" maxWidth="60.0" minWidth="60.0" prefWidth="60.0" styleClass="right" text="Unit Price">
 			          	  <cellValueFactory>
-			          		 <PropertyValueFactory property="unitPricee" />
+			          		 <PropertyValueFactory property="unitPrice" />
 			          	  </cellValueFactory>
 			          </TableColumn>
-                      <TableColumn maxWidth="60.0" minWidth="60.0" prefWidth="60.0" text="Quantity" >
+                      <TableColumn fx:id="countColumn" maxWidth="60.0" minWidth="60.0" prefWidth="60.0" styleClass="right" text="Quantity">
 			          	  <cellValueFactory>
 			          		 <PropertyValueFactory property="quantity" />
 			          	  </cellValueFactory>
 			          </TableColumn>
-                      <TableColumn maxWidth="60.0" minWidth="60.0" prefWidth="60.0" text="Total" >
+                      <TableColumn fx:id="totalColumn" maxWidth="60.0" minWidth="60.0" prefWidth="60.0" styleClass="right" text="Total">
 			          	  <cellValueFactory>
 			          		 <PropertyValueFactory property="subTotal" />
 			          	  </cellValueFactory>
@@ -104,7 +110,16 @@
                     </rowConstraints>
                      <children>
                         <Label text="Sub Total" />
-                        <Label text="Tax" GridPane.rowIndex="1" />
+                        <HBox GridPane.rowIndex="1">
+                           <children>
+                              <Label text="Tax" />
+                              <Label fx:id="taxRate" text="5 %" />
+                           </children>
+                           <styleClass>
+                              <String fx:value="right" />
+                              <String fx:value="sp-10" />
+                           </styleClass>
+                        </HBox>
                         <Label text="Total" GridPane.rowIndex="2" />
                         <Label fx:id="subTotal" text="1,600 MMK" GridPane.columnIndex="1" />
                         <Label fx:id="tax" text="200 MKK" GridPane.columnIndex="1" GridPane.rowIndex="1" />

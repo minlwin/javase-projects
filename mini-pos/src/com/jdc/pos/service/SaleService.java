@@ -1,12 +1,10 @@
 package com.jdc.pos.service;
 
-import java.util.List;
-
-import com.jdc.pos.dto.SaleDetail;
+import com.jdc.pos.dto.SaleDTO;
 
 public class SaleService {
 
-	public void save(List<SaleDetail> items) {
+	public void save(SaleDTO saleDto) {
 		// TODO Auto-generated method stub
 		
 	}

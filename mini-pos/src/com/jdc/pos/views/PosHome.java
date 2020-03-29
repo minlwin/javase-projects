@@ -1,15 +1,18 @@
 package com.jdc.pos.views;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import com.jdc.pos.commons.AutoComplete;
+import com.jdc.pos.commons.DateUtils;
 import com.jdc.pos.commons.StringUtils;
 import com.jdc.pos.dto.Summary;
 import com.jdc.pos.dto.TopItem;
 import com.jdc.pos.service.CategoryRepository;
 import com.jdc.pos.service.SummaryService;
+import com.jdc.pos.service.TaxRepository;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -48,6 +51,12 @@ public class PosHome {
     private Label products;
 
     @FXML
+    private Label refDate;
+
+    @FXML
+    private Label taxRate;
+
+    @FXML
     private Label sales;
     
     private SummaryService service;
@@ -73,6 +82,11 @@ public class PosHome {
     	schFrom.valueProperty().addListener((a,b,c) -> loadData());
     	schTo.valueProperty().addListener((a,b,c) -> loadData());
     	loadData();
+    	
+    	refDate.setText(DateUtils.format(LocalDate.now()));
+    	int tax = TaxRepository.getRepository().tax(LocalDate.now());
+    	
+    	taxRate.setText(String.format("%d %%", tax));
     }
 
 

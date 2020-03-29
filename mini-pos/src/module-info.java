@@ -6,5 +6,6 @@ module com.jdc.pos {
 	requires java.sql;
 	
 	opens com.jdc.pos.views to javafx.fxml;
+	opens com.jdc.pos.dto to javafx.base;
 	exports com.jdc.pos;
 }
