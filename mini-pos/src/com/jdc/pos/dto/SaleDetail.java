@@ -12,14 +12,14 @@ public class SaleDetail {
 	private String category;
 	private int unitPrice;
 	private int quantity;
-	private int tax;
+	private int taxRate;
 
 	private boolean deleted;
 
 	public int getSubTotal() {
 		return quantity * unitPrice;
 	}
-	
+
 	public boolean isDeleted() {
 		return deleted;
 	}
@@ -84,12 +84,12 @@ public class SaleDetail {
 		this.quantity = quantity;
 	}
 
-	public int getTax() {
-		return tax;
+	public int getTaxRate() {
+		return taxRate;
 	}
 
-	public void setTax(int tax) {
-		this.tax = tax;
+	public void setTaxRate(int taxRate) {
+		this.taxRate = taxRate;
 	}
 
 	public LocalDate getSaleDate() {
@@ -101,12 +101,12 @@ public class SaleDetail {
 	}
 
 	public void setProduct(Product p) {
-		
+
 		productId = p.getId();
 		productName = p.getProduct();
 		category = p.getCategory();
 		unitPrice = p.getPrice();
-		
+
 	}
 
 }

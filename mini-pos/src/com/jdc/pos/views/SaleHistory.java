@@ -1,6 +1,6 @@
 package com.jdc.pos.views;
 
-import com.jdc.pos.dto.SaleDetail;
+import com.jdc.pos.dto.Sale;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
@@ -19,6 +19,6 @@ public class SaleHistory {
     private DatePicker schTo;
 
     @FXML
-    private TableView<SaleDetail> table;
+    private TableView<Sale> table;
 
 }

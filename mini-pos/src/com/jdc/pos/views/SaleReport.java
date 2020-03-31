@@ -1,7 +1,5 @@
 package com.jdc.pos.views;
 
-import com.jdc.pos.dto.Sale;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableView;
@@ -22,6 +20,6 @@ public class SaleReport {
     private DatePicker schTo;
 
     @FXML
-    private TableView<Sale> table;
+    private TableView<SaleDetails> table;
 
 }
