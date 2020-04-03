@@ -15,7 +15,6 @@ public class Sale {
 	private String salePerson;
 	private int quantity;
 	private int subTotal;
-	private int tax;
 
 	public int getId() {
 		return id;
@@ -74,11 +73,11 @@ public class Sale {
 	}
 
 	public int getTax() {
-		return tax;
+		return subTotal / 100 * taxRate;
 	}
-
-	public void setTax(int tax) {
-		this.tax = tax;
+	
+	public int getTotal() {
+		return subTotal  + getTax();
 	}
 
 	public String getRemark() {

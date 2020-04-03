@@ -4,9 +4,9 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="content-view" stylesheets="@application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jdc.pos.views.SaleHistory">
    <children>
@@ -19,44 +19,44 @@
       </HBox>
       <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
         <columns>
-          	<TableColumn maxWidth="300.0" minWidth="120.0" prefWidth="-1.0" text="Sale Person" >
+          	<TableColumn maxWidth="300.0" minWidth="120.0" prefWidth="-1.0" text="Sale Person">
           		<cellValueFactory>
           			<PropertyValueFactory property="salePerson" />
           		</cellValueFactory>
           	</TableColumn>
-            <TableColumn maxWidth="300.0" minWidth="120.0" prefWidth="-1.0" text="Sale Date" >
+            <TableColumn fx:id="colDate" maxWidth="300.0" minWidth="120.0" prefWidth="-1.0" text="Sale Date" >
           		<cellValueFactory>
-          			<PropertyValueFactory property="saleDateStr" />
+          			<PropertyValueFactory property="saleDate" />
           		</cellValueFactory>
           	</TableColumn>
-            <TableColumn maxWidth="160.0" minWidth="80.0" prefWidth="-1.0" text="Sale Time" >
+            <TableColumn fx:id="colTime" maxWidth="160.0" minWidth="80.0" prefWidth="-1.0" text="Sale Time" >
           		<cellValueFactory>
-          			<PropertyValueFactory property="saleTimeStr" />
+          			<PropertyValueFactory property="saleTime" />
           		</cellValueFactory>
           	</TableColumn>
-            <TableColumn maxWidth="160.0" minWidth="80.0" prefWidth="-1.0" text="Product Count" >
+            <TableColumn fx:id="colCount" maxWidth="160.0" minWidth="80.0" prefWidth="-1.0" styleClass="right" text="Product Count" >
           		<cellValueFactory>
           			<PropertyValueFactory property="quantity" />
           		</cellValueFactory>
           	</TableColumn>
-            <TableColumn maxWidth="160.0" minWidth="80.0" prefWidth="-1.0" text="Sub Total" >
+            <TableColumn fx:id="colSub" maxWidth="160.0" minWidth="80.0" prefWidth="-1.0" styleClass="right" text="Sub Total" >
           		<cellValueFactory>
-          			<PropertyValueFactory property="subTotalStr" />
+          			<PropertyValueFactory property="subTotal" />
           		</cellValueFactory>
           	</TableColumn>
-            <TableColumn maxWidth="160.0" minWidth="80.0" prefWidth="-1.0" text="Tax" >
+            <TableColumn fx:id="colTax" maxWidth="160.0" minWidth="80.0" prefWidth="-1.0" styleClass="right" text="Tax" >
           		<cellValueFactory>
-          			<PropertyValueFactory property="taxStr" />
+          			<PropertyValueFactory property="tax" />
           		</cellValueFactory>
           	</TableColumn>
-            <TableColumn maxWidth="160.0" minWidth="80.0" prefWidth="-1.0" text="Total" >
+            <TableColumn fx:id="colTotal" maxWidth="160.0" minWidth="80.0" prefWidth="-1.0" styleClass="right" text="Total" >
           		<cellValueFactory>
-          			<PropertyValueFactory property="totalStr" />
+          			<PropertyValueFactory property="total" />
           		</cellValueFactory>
           	</TableColumn>
-            <TableColumn maxWidth="400.0" minWidth="120.0" prefWidth="-1.0" text="Remark" >
+            <TableColumn maxWidth="400.0" minWidth="120.0" prefWidth="-1.0" text="Remark">
           		<cellValueFactory>
-          			<PropertyValueFactory property="remarkk" />
+          			<PropertyValueFactory property="remark" />
           		</cellValueFactory>
           	</TableColumn>
         </columns>

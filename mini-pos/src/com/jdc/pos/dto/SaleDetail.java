@@ -6,15 +6,22 @@ public class SaleDetail {
 
 	private int id;
 	private int saleId;
+	private int unitPrice;
+	private int quantity;
+
 	private LocalDate saleDate;
+	
 	private int productId;
 	private String productName;
 	private String category;
-	private int unitPrice;
-	private int quantity;
-	private int taxRate;
+	
+	private int tax;
 
 	private boolean deleted;
+	
+	public int getTotal() {
+		return getSubTotal() + tax;
+	}
 
 	public int getSubTotal() {
 		return quantity * unitPrice;
@@ -84,12 +91,12 @@ public class SaleDetail {
 		this.quantity = quantity;
 	}
 
-	public int getTaxRate() {
-		return taxRate;
+	public int getTax() {
+		return tax;
 	}
 
-	public void setTaxRate(int taxRate) {
-		this.taxRate = taxRate;
+	public void setTax(int tax) {
+		this.tax = tax;
 	}
 
 	public LocalDate getSaleDate() {

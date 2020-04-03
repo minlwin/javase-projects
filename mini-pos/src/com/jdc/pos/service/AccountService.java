@@ -4,11 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.jdc.pos.commons.Validations;
 import com.jdc.pos.context.ConnectionManager;
 import com.jdc.pos.context.PosException;
-import com.jdc.pos.context.SqlHelper;
+import static com.jdc.pos.context.SqlHelper.sql;
 import com.jdc.pos.dto.Account;
 
 public class AccountService {
@@ -31,12 +33,35 @@ public class AccountService {
 
 		return user;
 	}
+	
+	public List<Account> search(String nameOrId) {
+		
+		List<Account> result = new ArrayList<>();
+		
+		try(Connection conn = ConnectionManager.getConnection();
+				PreparedStatement stmt = conn.prepareStatement(sql("account.findByIdOrNameLike"))) {
+			String param = nameOrId.toLowerCase().concat("%");
+			stmt.setString(1, param);
+			stmt.setString(2, param);
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				result.add(getData(rs));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 
 	private Account findById(String loginId) {
 		
 	
 		try(Connection conn = ConnectionManager.getConnection();
-				PreparedStatement stmt = conn.prepareStatement(SqlHelper.sql("account.findById"))) {
+				PreparedStatement stmt = conn.prepareStatement(sql("account.findById"))) {
 			
 			stmt.setString(1, loginId);
 			
