@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.jdc.pos.commons.StringUtils;
+import static  com.jdc.pos.commons.StringUtils.isEmpty;
 import com.jdc.pos.context.ConnectionManager;
 import com.jdc.pos.dto.Sale;
 import com.jdc.pos.dto.SaleDTO;
@@ -109,7 +109,7 @@ public class SaleService {
 		StringBuilder sb = new StringBuilder(sql("sale.select"));
 		List<Object> params = new ArrayList<>();
 		
-		if(!StringUtils.isEmpty(person)) {
+		if(!isEmpty(person)) {
 			sb.append(" and lower(s.sale_person) like ?");
 			params.add(person.toLowerCase().concat("%"));
 		}
@@ -158,18 +158,23 @@ public class SaleService {
 		return result;
 	}
 
-	public List<SaleDetail> searchDetails(String category, LocalDate from, LocalDate to) {
+	public List<SaleDetail> searchDetails(String category, String product, LocalDate from, LocalDate to) {
 		
 		List<SaleDetail> result = new ArrayList<>();
 
 		StringBuilder sb = new StringBuilder(sql("sale.details.select"));
 		List<Object> params = new ArrayList<>();
 		
-		if(!StringUtils.isEmpty(category)) {
+		if(!isEmpty(category)) {
 			sb.append(" and lower(p.category) like ?");
 			params.add(category.toLowerCase().concat("%"));
 		}
 		
+		if(!isEmpty(product)) {
+			sb.append(" and lower(p.product) like ?");
+			params.add(product.toLowerCase().concat("%"));
+		}
+
 		if(null != from) {
 			sb.append(" and s.sale_date >= ?");
 			params.add(Date.valueOf(from));

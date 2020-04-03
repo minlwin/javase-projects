@@ -36,16 +36,16 @@
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" VBox.vgrow="ALWAYS">
          <children>
-            <TableView fx:id="topItems">
+            <TableView fx:id="topItems" styleClass="home-left" HBox.hgrow="ALWAYS">
               <columns>
-                <TableColumn prefWidth="75.0" text="Product Name">
+                <TableColumn maxWidth="300.0" prefWidth="75.0" text="Product Name">
                 	<cellValueFactory>
                 		<PropertyValueFactory property="key" />
                 	</cellValueFactory>
                 </TableColumn>
-                <TableColumn prefWidth="75.0" styleClass="right" text="Sales">
+                <TableColumn fx:id="colValue" maxWidth="200.0" prefWidth="75.0" styleClass="right" text="Sales">
                 	<cellValueFactory>
-                		<PropertyValueFactory property="key" />
+                		<PropertyValueFactory property="value" />
                 	</cellValueFactory>
                 </TableColumn>
               </columns>
@@ -53,7 +53,7 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <VBox HBox.hgrow="ALWAYS">
+            <VBox styleClass="home-right" HBox.hgrow="ALWAYS">
                <children>
                   <LineChart fx:id="chart" VBox.vgrow="ALWAYS">
                     <xAxis>

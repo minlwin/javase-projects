@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.jdc.pos.commons.AutoComplete;
 import com.jdc.pos.commons.DateUtils;
+import com.jdc.pos.commons.DecimalFormatedCellFactory;
 import com.jdc.pos.commons.StringUtils;
 import com.jdc.pos.dto.Summary;
 import com.jdc.pos.dto.TopItem;
@@ -24,6 +25,7 @@ import javafx.scene.chart.XYChart.Data;
 import javafx.scene.chart.XYChart.Series;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
@@ -40,6 +42,8 @@ public class PosHome {
 
     @FXML
     private TableView<TopItem> topItems;
+    @FXML
+    private TableColumn<TopItem, Integer> colValue;
 
     @FXML
     private LineChart<String, Integer> chart;
@@ -68,6 +72,8 @@ public class PosHome {
     private void initialize() {
     	
     	service = new SummaryService();
+    	
+    	colValue.setCellFactory(new DecimalFormatedCellFactory<>());
     	
     	AutoComplete.attach(schCategory, CategoryRepository.getRepository()::search, categoryProperty::set);
     	

@@ -344,3 +344,15 @@ TilePane {
 	-fx-alignment: center;
 	-fx-padding: 0 5 0 5;
 }
+
+.home-left {
+	-fx-min-width: 280px;
+	-fx-pref-width: 320px;
+	-fx-max-width: 400px;
+}
+
+.home-right {
+	-fx-min-width: 450px;
+	-fx-pref-width: 680px;
+	-fx-max-width: 1200px;
+}

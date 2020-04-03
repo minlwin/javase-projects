@@ -1,11 +1,19 @@
 package com.jdc.pos.service;
 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import static com.jdc.pos.commons.StringUtils.isEmpty;
+import static com.jdc.pos.context.SqlHelper.sql;
+
+import com.jdc.pos.context.ConnectionManager;
 import com.jdc.pos.dto.Summary;
 import com.jdc.pos.dto.TopItem;
 
@@ -13,6 +21,47 @@ public class SummaryService {
 
 	public List<TopItem> findTopItems(String category, LocalDate from, LocalDate to) {
 		List<TopItem> list = new ArrayList<>();
+		
+		StringBuilder sb = new StringBuilder(sql(isEmpty(category) ? "summary.top.category" : "summary.top.product"));
+		List<Object> params = new ArrayList<>();
+		
+		if(!isEmpty(category)) {
+			sb.append(" and lower(p.category) like ?");
+			params.add(category.toLowerCase().concat("%"));
+		}
+		
+		if(null != from) {
+			sb.append(" and sa.sale_date >= ?");
+			params.add(Date.valueOf(from));
+		}
+		
+		if(null != to) {
+			sb.append(" and sa.sale_date <= ?");
+			params.add(Date.valueOf(to));
+		}
+		
+		sb.append(" group by `key` order by `value` desc");
+		
+		try(Connection conn = ConnectionManager.getConnection();
+				PreparedStatement stmt = conn.prepareStatement(sb.toString())) {
+			
+			for (int i = 0; i < params.size(); i++) {
+				stmt.setObject(i + 1, params.get(i));
+			}
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				TopItem item = new TopItem();
+				item.setKey(rs.getString(1));
+				item.setValue(rs.getInt(2));
+				list.add(item);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return list;
 	}
 
@@ -21,7 +70,7 @@ public class SummaryService {
 		return result;
 	}
 
-	public Summary findSummary(String text, LocalDate value, LocalDate value2) {
+	public Summary findSummary(String category, LocalDate from, LocalDate to) {
 		Summary summary = new Summary();
 		return summary;
 	}

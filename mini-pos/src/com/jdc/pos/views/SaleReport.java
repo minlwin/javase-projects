@@ -75,6 +75,7 @@ public class SaleReport {
     	schFrom.valueProperty().addListener((a,b,c) -> search());
     	schTo.valueProperty().addListener((a,b,c) -> search());
     	categoryProperty.addListener((a,b,c) -> search());
+    	schProduct.textProperty().addListener((a,b,c) -> search());
     	
     	colDate.setCellFactory(new LocalDateCellFactory<>());
     	colPrice.setCellFactory(new DecimalFormatedCellFactory<>());
@@ -89,7 +90,7 @@ public class SaleReport {
     
     private void search() {
     	table.getItems().clear();
-    	List<SaleDetail> list  = sales.searchDetails(schCategory.getText(), schFrom.getValue(), schTo.getValue());   	
+    	List<SaleDetail> list  = sales.searchDetails(schCategory.getText(), schProduct.getText(), schFrom.getValue(), schTo.getValue());   	
     	table.getItems().addAll(list);
     }
     
