@@ -120,8 +120,46 @@ public class SummaryService {
 	}
 
 
-	public Summary findSummary(String category, LocalDate from, LocalDate to) {
+	public Summary findSummary(LocalDate from, LocalDate to) {
 		Summary summary = new Summary();
+		to = null == to ? LocalDate.now() : to;
+		from = null == from ? to.minusMonths(1) : from;
+		
+		try(Connection conn = ConnectionManager.getConnection();
+				PreparedStatement stmt1 = conn.prepareStatement(sql("summary.category"));
+				PreparedStatement stmt2 = conn.prepareStatement(sql("summary.product"));
+				PreparedStatement stmt3 = conn.prepareStatement(sql("summary.sales"))) {
+			
+			stmt1.setDate(1, Date.valueOf(from));
+			stmt1.setDate(2, Date.valueOf(to));
+			
+			ResultSet rs1 = stmt1.executeQuery();
+			
+			while(rs1.next()) {
+				summary.setCategory(rs1.getInt(1));
+			}
+			
+			stmt2.setDate(1, Date.valueOf(from));
+			stmt2.setDate(2, Date.valueOf(to));
+			
+			ResultSet rs2 = stmt2.executeQuery();
+			
+			while(rs2.next()) {
+				summary.setProduct(rs2.getInt(1));
+			}
+
+			stmt3.setDate(1, Date.valueOf(from));
+			stmt3.setDate(2, Date.valueOf(to));
+
+			ResultSet rs3 = stmt3.executeQuery();
+			
+			while(rs3.next()) {
+				summary.setSale(rs3.getInt(1));
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return summary;
 	}
 

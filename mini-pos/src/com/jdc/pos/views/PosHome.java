@@ -1,14 +1,15 @@
 package com.jdc.pos.views;
 
+import static com.jdc.pos.commons.AutoComplete.attach;
+import static com.jdc.pos.commons.DateUtils.format;
+import static com.jdc.pos.commons.StringUtils.kilo;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.jdc.pos.commons.AutoComplete;
-import com.jdc.pos.commons.DateUtils;
 import com.jdc.pos.commons.DecimalFormatedCellFactory;
-import com.jdc.pos.commons.StringUtils;
 import com.jdc.pos.dto.Summary;
 import com.jdc.pos.dto.TopItem;
 import com.jdc.pos.service.CategoryRepository;
@@ -75,7 +76,7 @@ public class PosHome {
     	
     	colValue.setCellFactory(new DecimalFormatedCellFactory<>());
     	
-    	AutoComplete.attach(schCategory, CategoryRepository.getRepository()::search, categoryProperty::set);
+    	attach(schCategory, CategoryRepository.getRepository()::search, categoryProperty::set);
     	
     	categoryProperty.addListener((a,b,c) -> loadData());
     	
@@ -89,7 +90,7 @@ public class PosHome {
     	schTo.valueProperty().addListener((a,b,c) -> loadData());
     	loadData();
     	
-    	refDate.setText(DateUtils.format(LocalDate.now()));
+    	refDate.setText(format(LocalDate.now()));
     	int tax = TaxRepository.getRepository().tax(LocalDate.now());
     	
     	taxRate.setText(String.format("%d %%", tax));
@@ -102,9 +103,9 @@ public class PosHome {
 		SummaryLoader summaryLoader = new SummaryLoader();
 		summaryLoader.setOnSucceeded(event -> {
 			Summary data = summaryLoader.getValue();
-			categories.setText(StringUtils.kilo(data.getCategory()));
-			products.setText(StringUtils.kilo(data.getProduct()));
-			sales.setText(StringUtils.kilo(data.getSale()));
+			categories.setText(kilo(data.getCategory()));
+			products.setText(kilo(data.getProduct()));
+			sales.setText(kilo(data.getSale()));
 		});
 
 		// Chart Data
@@ -112,6 +113,7 @@ public class PosHome {
 		chartLoader.setOnSucceeded(event -> {
 			chart.getData().clear();
 			chart.getData().addAll(chartLoader.getValue());
+			summaryLoader.start();
 		});
 
 		// Top Items
@@ -158,7 +160,7 @@ public class PosHome {
 						series.setName(key);
 						
 						result.get(key).entrySet().stream()
-							.map(a -> new Data<String, Integer>(DateUtils.format(a.getKey()), a.getValue()))
+							.map(a -> new Data<String, Integer>(format(a.getKey()), a.getValue()))
 							.forEach(series.getData()::add);
 						
 						list.add(series);
@@ -179,7 +181,7 @@ public class PosHome {
 				
 				@Override
 				protected Summary call() throws Exception {
-					return service.findSummary(schCategory.getText(), schFrom.getValue(), schTo.getValue());
+					return service.findSummary(schFrom.getValue(), schTo.getValue());
 				}
 			};
 		}
