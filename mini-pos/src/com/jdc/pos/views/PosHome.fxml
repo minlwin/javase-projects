@@ -55,7 +55,7 @@
             </TableView>
             <VBox styleClass="home-right" HBox.hgrow="ALWAYS">
                <children>
-                  <LineChart fx:id="chart" VBox.vgrow="ALWAYS">
+                  <LineChart fx:id="chart" animated="false" VBox.vgrow="ALWAYS">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>

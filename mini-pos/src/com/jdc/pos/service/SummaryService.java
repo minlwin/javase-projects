@@ -1,5 +1,8 @@
 package com.jdc.pos.service;
 
+import static com.jdc.pos.commons.StringUtils.isEmpty;
+import static com.jdc.pos.context.SqlHelper.sql;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -9,9 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-
-import static com.jdc.pos.commons.StringUtils.isEmpty;
-import static com.jdc.pos.context.SqlHelper.sql;
 
 import com.jdc.pos.context.ConnectionManager;
 import com.jdc.pos.dto.Summary;
@@ -65,10 +65,60 @@ public class SummaryService {
 		return list;
 	}
 
-	public Map<String, Map<String, Integer>> findChartData(String category, LocalDate from, LocalDate to) {
-		Map<String, Map<String, Integer>> result = new TreeMap<>();
+	public Map<String, Map<LocalDate, Integer>> findChartData(String category, LocalDate from, LocalDate to) {
+		Map<String, Map<LocalDate, Integer>>  result = new TreeMap<>();
+		
+		to = null == to ? LocalDate.now() : to;
+		from = null == from ? to.minusMonths(1) : from;
+		
+		try(Connection conn = ConnectionManager.getConnection();
+				PreparedStatement stmt = conn.prepareStatement(sql(isEmpty(category) ? "summary.chart.category" : "summary.chart.product"))) {
+			
+			stmt.setDate(1, Date.valueOf(from));
+			stmt.setDate(2, Date.valueOf(to));
+			
+			if(!isEmpty(category)) {
+				stmt.setString(3, category);
+			}
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				String key = rs.getString(1);
+				LocalDate target = rs.getDate(2).toLocalDate();
+				int value = rs.getInt(3);
+				
+				Map<LocalDate, Integer> map = result.get(key);
+				if(null == map) {
+					map = new TreeMap<>();
+					result.put(key, map);
+				}
+				
+				map.put(target, value);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		while(from.compareTo(to) <= 0) {
+			
+			for(String key : result.keySet()) {
+				
+				Map<LocalDate, Integer> map = result.get(key);
+				
+				if(!map.keySet().contains(from)) {
+					map.put(from, 0);
+				}
+			}
+			
+			from = from.plusDays(1);
+		}
+		
 		return result;
 	}
+
 
 	public Summary findSummary(String category, LocalDate from, LocalDate to) {
 		Summary summary = new Summary();

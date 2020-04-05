@@ -98,22 +98,6 @@ public class PosHome {
 
 	private void loadData() {
 
-		// Top Items
-		TopItemsLoader topLoader = new TopItemsLoader();
-		topLoader.setOnSucceeded(event -> {			
-			topItems.getItems().clear();
-			topItems.getItems().addAll(topLoader.getValue());
-		});
-		topLoader.start();
-		
-		// Chart Data
-		ChartDataLoader chartLoader = new ChartDataLoader();
-		chartLoader.setOnSucceeded(event -> {
-			chart.getData().clear();
-			chart.getData().addAll(chartLoader.getValue());
-		});
-		chartLoader.start();
-		
 		// Summary Data
 		SummaryLoader summaryLoader = new SummaryLoader();
 		summaryLoader.setOnSucceeded(event -> {
@@ -122,6 +106,23 @@ public class PosHome {
 			products.setText(StringUtils.kilo(data.getProduct()));
 			sales.setText(StringUtils.kilo(data.getSale()));
 		});
+
+		// Chart Data
+		ChartDataLoader chartLoader = new ChartDataLoader();
+		chartLoader.setOnSucceeded(event -> {
+			chart.getData().clear();
+			chart.getData().addAll(chartLoader.getValue());
+		});
+
+		// Top Items
+		TopItemsLoader topLoader = new TopItemsLoader();
+		topLoader.setOnSucceeded(event -> {			
+			topItems.getItems().clear();
+			topItems.getItems().addAll(topLoader.getValue());
+			chartLoader.start();
+		});
+		topLoader.start();
+				
 	}
 	
 	private class TopItemsLoader extends Service<List<TopItem>> {
@@ -149,7 +150,7 @@ public class PosHome {
 				protected List<Series<String, Integer>> call() throws Exception {
 					
 					List<Series<String, Integer>> list = new ArrayList<>();
-					Map<String, Map<String, Integer>> result = service.findChartData(schCategory.getText(), schFrom.getValue(), schTo.getValue());
+					Map<String, Map<LocalDate, Integer>> result = service.findChartData(schCategory.getText(), schFrom.getValue(), schTo.getValue());
 					
 					for(String key : result.keySet()) {
 						
@@ -157,7 +158,7 @@ public class PosHome {
 						series.setName(key);
 						
 						result.get(key).entrySet().stream()
-							.map(a -> new Data<String, Integer>(a.getKey(), a.getValue()))
+							.map(a -> new Data<String, Integer>(DateUtils.format(a.getKey()), a.getValue()))
 							.forEach(series.getData()::add);
 						
 						list.add(series);
