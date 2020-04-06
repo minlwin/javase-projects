@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
@@ -27,8 +28,16 @@
          <children>
             <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="Start Date" />
-                <TableColumn prefWidth="75.0" styleClass="right" text="Tax Rate" />
+                <TableColumn fx:id="colStartDate" prefWidth="75.0" styleClass="center" text="Start Date">
+                	<cellValueFactory>
+                		<PropertyValueFactory property="startDate" />
+                	</cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="colTaxRate" prefWidth="75.0" styleClass="center" text="Tax Rate">
+                	<cellValueFactory>
+                		<PropertyValueFactory property="percent" />
+                	</cellValueFactory>
+                </TableColumn>
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -41,7 +50,7 @@
                         <Label fx:id="message" />
                      </children>
                   </HBox>
-                  <Button fx:id="SAVE" mnemonicParsing="false" onAction="#save" styleClass="dark-button" text="SAVE" />
+                  <Button mnemonicParsing="false" onAction="#save" styleClass="dark-button" text="SAVE" />
                </children>
             </HBox>
          </children>

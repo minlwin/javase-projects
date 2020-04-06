@@ -1,18 +1,22 @@
 package com.jdc.pos.views;
 
+import java.time.LocalDate;
 import java.util.List;
 
+import com.jdc.pos.commons.LocalDateCellFactory;
 import com.jdc.pos.commons.Validations;
 import com.jdc.pos.context.PosException;
 import com.jdc.pos.dto.TaxInfo;
 import com.jdc.pos.service.TaxRepository;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
@@ -28,6 +32,12 @@ public class TaxConfig {
 
     @FXML
     private TableView<TaxInfo> table;
+    
+    @FXML
+    private TableColumn<TaxInfo, LocalDate> colStartDate;
+    
+    @FXML
+    private TableColumn<TaxInfo, String> colTaxRate;
 
     @FXML
     private Label message;
@@ -104,6 +114,17 @@ public class TaxConfig {
 	private void initialize() {
 		List<TaxInfo> list = TaxRepository.getRepository().getAll();
 		table.getItems().addAll(list);
+		
+		colStartDate.setCellFactory(new LocalDateCellFactory<>());
+		colTaxRate.setCellValueFactory(e  -> {
+			
+			TaxInfo data = e.getValue();
+			if(null != data) {
+				return new SimpleStringProperty(String.format("%d%%", data.getPercent()));
+			}
+			
+			return null;
+		});
 	}
 
 }

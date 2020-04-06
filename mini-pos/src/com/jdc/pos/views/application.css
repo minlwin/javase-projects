@@ -336,6 +336,10 @@ TilePane {
 	-fx-alignment: center-left;
 }
 
+.center {
+	-fx-alignment: center ;
+}
+
 .sp-10 {
 	-fx-spacing: 10;
 }
