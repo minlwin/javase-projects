@@ -25,6 +25,8 @@ import com.jdc.pos.views.custom.ProductItem;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
@@ -254,6 +256,34 @@ public class SaleDetails {
     	List<SaleDetail> list = new ArrayList<>(cart.getItems());
     	cart.getItems().clear();
     	cart.getItems().addAll(list);
+	}
+
+	public static Parent getView(Sale sale) {
+		try {
+			
+			FXMLLoader loader = new FXMLLoader(SaleDetails.class.getResource("SaleDetails.fxml"));
+			Parent view = loader.load();
+			SaleDetails controller = loader.getController();
+			controller.set(sale);
+			return view;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private void set(Sale sale) {
+		
+		saleDto = sales.find(sale);
+	  	taxRate.setText(String.format("%d %%", sale.getTaxRate()));
+    	taxProperty.taxRate().set(sale.getTaxRate());
+	    cart.getItems().addAll(saleDto.getDetails());
+    	saleDate.setText(DateUtils.format(sale.getSaleDate()));
+    	saleTime.setText(DateUtils.format(sale.getSaleTime()));
+    	
+    	calculate();
+	    
 	}
 
 }

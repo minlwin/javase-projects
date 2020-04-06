@@ -1,5 +1,7 @@
 package com.jdc.pos.views;
 
+import com.jdc.pos.commons.ViewLoader;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,16 +12,23 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class PosFrame {
+public class PosFrame implements ViewLoader{
 	
 	@FXML
 	private StackPane content;
 	@FXML
 	private HBox titleBar;
 	
+	private static ViewLoader viewLoader;
+	
+	public static ViewLoader getViewLoader() {
+		return viewLoader;
+	}
+	
 	@FXML
 	private void initialize() {
 		loadView("PosHome");
+		viewLoader = this;
 	}
 
 	@FXML
@@ -69,5 +78,11 @@ public class PosFrame {
 			e.printStackTrace();
 		}
 		
+	}
+
+	@Override
+	public void loadView(Parent view) {
+		content.getChildren().clear();
+		content.getChildren().add(view);
 	}
 }

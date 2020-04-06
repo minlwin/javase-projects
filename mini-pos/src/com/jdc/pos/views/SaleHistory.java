@@ -16,6 +16,7 @@ import com.jdc.pos.service.SaleService;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -85,6 +86,14 @@ public class SaleHistory {
     	colTotal.setCellFactory(new DecimalFormatedCellFactory<>());
 
     	schFrom.setValue(LocalDate.now().withDayOfMonth(1));
+    	
+    	table.setOnMouseClicked(event -> {
+    		if(event.getClickCount() == 2) {
+    			Sale sale = table.getSelectionModel().getSelectedItem();
+    			Parent view = SaleDetails.getView(sale);
+    			PosFrame.getViewLoader().loadView(view);
+    		}
+    	});
     }
     
     private void search() {

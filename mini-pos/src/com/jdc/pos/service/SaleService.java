@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
 import java.time.LocalDate;
@@ -196,19 +197,7 @@ public class SaleService {
 			ResultSet rs = stmt.executeQuery();
 			
 			while(rs.next()) {
-				SaleDetail d = new SaleDetail();
-				
-				d.setId(rs.getInt(1));
-				d.setSaleId(rs.getInt(2));
-				d.setUnitPrice(rs.getInt(3));
-				d.setQuantity(rs.getInt(4));
-				d.setSaleDate(rs.getDate(5).toLocalDate());
-				d.setProductId(rs.getInt(6));
-				d.setCategory(rs.getString(7));
-				d.setProductName(rs.getString(8));
-				d.setTax(rs.getInt(9));
-				
-				result.add(d);
+				result.add(getDetails(rs));
 			}
 			
 		} catch (Exception e) {
@@ -217,6 +206,47 @@ public class SaleService {
 
 				
 		return result;
+	}
+
+	public SaleDTO find(Sale sale) {
+
+		SaleDTO result = new SaleDTO();
+		result.setSale(sale);
+
+		StringBuilder sb = new StringBuilder(sql("sale.details.select"));
+		sb.append(" and d.sale_id = ?");
+		
+		try(Connection conn = ConnectionManager.getConnection();
+				PreparedStatement stmt = conn.prepareStatement(sb.toString())) {
+			
+			stmt.setInt(1, sale.getId());
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				result.getDetails().add(getDetails(rs));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
+	private SaleDetail getDetails(ResultSet rs) throws SQLException {
+		SaleDetail d = new SaleDetail();
+		
+		d.setId(rs.getInt(1));
+		d.setSaleId(rs.getInt(2));
+		d.setUnitPrice(rs.getInt(3));
+		d.setQuantity(rs.getInt(4));
+		d.setSaleDate(rs.getDate(5).toLocalDate());
+		d.setProductId(rs.getInt(6));
+		d.setCategory(rs.getString(7));
+		d.setProductName(rs.getString(8));
+		d.setTax(rs.getInt(9));
+		return d;
 	}
 
 }
