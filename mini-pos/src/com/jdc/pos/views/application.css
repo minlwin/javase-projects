@@ -138,7 +138,8 @@
 	-fx-spacing: 20px;
 }
 
-.content-view .text-field {
+.content-view .text-field,
+.tax-config .text-field {
 	-fx-background-color: transparent;
 	-fx-border-color: dark;
 	-fx-border-radius: 2px;
@@ -331,6 +332,10 @@ TilePane {
 	-fx-alignment: center-right;
 }
 
+.left {
+	-fx-alignment: center-left;
+}
+
 .sp-10 {
 	-fx-spacing: 10;
 }
@@ -355,4 +360,30 @@ TilePane {
 	-fx-min-width: 450px;
 	-fx-pref-width: 680px;
 	-fx-max-width: 1200px;
+}
+
+.tax-config  {
+	-fx-pref-width: 480px;
+}
+
+.tax-config .header {
+	-fx-padding: 16px;
+	-fx-background-color: dark;
+}
+
+.tax-config .header .label {
+	-fx-text-fill: light;
+	-fx-font-size: 18px;
+}
+
+.tax-edit-box  {
+	
+	-fx-padding: 16px;
+	-fx-spacing: 10px;	
+	
+}
+
+.tax-rates-box {
+	-fx-padding: 0 16 16 16;
+	-fx-spacing: 10;
 }

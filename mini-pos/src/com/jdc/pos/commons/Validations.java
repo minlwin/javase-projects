@@ -15,4 +15,12 @@ public class Validations {
 			throw new PosException(String.format("Please select %s!", field));
 		}
 	}
+	
+	public static void numberField(String data, String field) {
+		try {
+			Integer.parseInt(data);
+		} catch (Exception e) {
+			throw new PosException(String.format("Please enter %s with digit.", field));
+		}
+	}
 }

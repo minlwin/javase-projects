@@ -2,10 +2,19 @@ package com.jdc.pos.dto;
 
 import java.time.LocalDate;
 
-public class TaxInfo implements Comparable<TaxInfo>{
+public class TaxInfo implements Comparable<TaxInfo> {
 
 	private LocalDate startDate;
 	private int percent;
+
+	public TaxInfo() {
+	}
+
+	public TaxInfo(LocalDate startDate, int percent) {
+		super();
+		this.startDate = startDate;
+		this.percent = percent;
+	}
 
 	public LocalDate getStartDate() {
 		return startDate;

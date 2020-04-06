@@ -15,8 +15,8 @@ public class StringUtils {
 	}
 	
 	public static String kilo(int data) {
-		if(data >= 10000) {
-			int target = data / 10000;
+		if(data >= 100000) {
+			int target = data / 1000;
 			return String.format("%s K", DECIMAL_FORMAT.format(target));
 		}
 		

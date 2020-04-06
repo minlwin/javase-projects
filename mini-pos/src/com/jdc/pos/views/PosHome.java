@@ -188,4 +188,13 @@ public class PosHome {
 		
 	}
 
+	@FXML
+	private void editTaxConfig() {
+		
+		TaxConfig.loadView(() -> {
+			int tax = TaxRepository.getRepository().tax(LocalDate.now());
+	    	taxRate.setText(String.format("%d %%", tax));
+		});
+	}
+	
 }
