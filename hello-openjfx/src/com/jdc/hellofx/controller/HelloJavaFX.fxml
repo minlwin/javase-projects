@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="235.0" prefWidth="388.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jdc.hellofx.controller.HelloJavaFX">
+   <children>
+      <Label layoutX="68.0" layoutY="35.0" text="Hello  Java FX">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Label>
+      <TextField fx:id="input" layoutX="68.0" layoutY="104.0" prefHeight="27.0" prefWidth="198.0" promptText="Enter Name" />
+      <Button layoutX="281.0" layoutY="104.0" mnemonicParsing="false" onAction="#greet" text="Greet" />
+      <Label fx:id="output" layoutX="68.0" layoutY="165.0" />
+   </children>
+</AnchorPane>
